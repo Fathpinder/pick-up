@@ -1,0 +1,21 @@
+<article class="'park">
+    <div class="title">
+        <img class ='park-img'src="./">
+        <a href='{{park.park_url}}' target="'_blank">{{park.name}}</a>
+        <span>({{park.park_url}})</span>
+    </div>
+    <div class="event-info">
+
+    </div>
+    {{#if loggedIn}}
+
+{{!-- Prompt for user to make a reservation --}}
+
+    {{!-- <button type="submit" class="reserve-btn">Reserve a Timeslot</button> --}}
+    
+    {{/if}}
+</article>
+
+{{#if loggedIn}}
+<script> src='scriptsgohere'</script>
+{{/if}}
