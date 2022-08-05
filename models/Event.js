@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-// create our Post model
+// create our Event model
 class Event extends Model {}
 
-// create fields/columns for Post model
+// create fields/columns for Event model
 Event.init(
   {
     id: {
@@ -16,27 +16,33 @@ Event.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    post_url: {
+    //location of park referenced by ID
+    park_id: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isURL: true
+        isinPark: true
       }
     },
+    //added to this list by RVSP 
     user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
         key: 'id'
       }
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: true,
     }
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post'
+    modelName: 'event'
   }
 );
 
-module.exports = Post;
+module.exports = Event;
