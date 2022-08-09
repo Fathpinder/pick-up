@@ -1,16 +1,19 @@
-const { Park } = require('../models')
+const sequelize = require("../config/connection");
+const { Park, Event } = require("../models");
 
-const parkData = [
-    {
-        id: 1,
-        name: 'John Smith Park',
-        location: '123 Apple Road',
-        activities: ['basketball', 'soccer', 'hockey']
-    },
-    {
-        id: 2,
-        name: 'Banana Boat Playground',
-        location: '24 Straightaway Street',
-        activities: ['basketball', 'lacrosse', 'frisbee']
-    }
-]
+const parkdata = [
+  {
+    name: "Bredesen Park",
+    location: "5901 Olinger Blvd, Minneapolis, MN 55436",
+    activites: ["basketball", "tennis"],
+  },
+  {
+    name: "Countryside",
+    location: "Edina, MN 55436",
+    activites: "basketball",
+  },
+];
+
+const seedParks = () => Park.bulkCreate(parkdata, { individualHooks: true });
+
+module.exports = seedParks;
