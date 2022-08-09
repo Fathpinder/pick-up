@@ -1,4 +1,4 @@
-//import all models
+
 const User = require('./User');
 const Park = require('./Park');
 const Event = require('./Event');
@@ -6,16 +6,25 @@ const RSVP = require('./RSVP');
 
 // create associations
 User.hasMany(Event, {
-  foreignKey: 'user_id'
+  foreignKey: "user_id",
 });
 
 Event.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
+});
+
+User.belongsToMany(Park, {
+  foreignKey: "user_id",
+  through: Event,
 });
 
 Park.hasMany(Event, {
-    foreignKey: 'user_id'
+  foreignKey: "event_id",
 });
 
-module.exports = { User, Park, Event};
+Event.hasMany(User, {
+  foreignKey: "user_id",
+});
+
+module.exports = { User, Park, Event };

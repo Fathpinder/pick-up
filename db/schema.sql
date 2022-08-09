@@ -1,3 +1,4 @@
-DROP DATABASE IF EXISTS pick_db;
+
+DROP DATABASE IF EXISTS pickup_db;
 
 CREATE DATABASE pickup_db;
