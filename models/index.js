@@ -1,8 +1,7 @@
-
 const User = require('./User');
 const Park = require('./Park');
 const Event = require('./Event');
-const RSVP = require('./RSVP');
+//const RSVP = require('./RSVP');
 
 // create associations
 User.hasMany(Event, {
@@ -14,17 +13,22 @@ Event.belongsTo(User, {
   onDelete: "SET NULL",
 });
 
-User.belongsToMany(Park, {
-  foreignKey: "user_id",
-  through: Event,
-});
+// User.belongsToMany(Park, {
+//   foreignKey: "user_id",
+//   through: Event,
+// });
+
+// Event.hasMany(User, { 
+//   //through: RSVP,
+//   foreignKey: 'event_id'
+// });
 
 Park.hasMany(Event, {
-  foreignKey: "event_id",
+    foreignKey: 'park_id'
 });
 
-Event.hasMany(User, {
-  foreignKey: "user_id",
+Event.belongsTo(Park, {
+  foreignKey: 'park_id'
 });
 
-module.exports = { User, Park, Event };
+module.exports = { User, Park, Event};
