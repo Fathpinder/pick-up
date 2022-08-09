@@ -91,10 +91,10 @@ router.Event('/', withAuth, (req, res) => {
     });
 });
 
-router.put('/upvote', withAuth, (req, res) => {
+router.put('/rsvp', withAuth, (req, res) => {
   // custom static method created in models/Event.js
   Event.upvote({ ...req.body, user_id: req.session.user_id }, { Park, RSVP, User })
-    .then(updatedVoteData => res.json(updatedVoteData))
+    .then(updatedRSVPData => res.json(updatedRSVPData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);

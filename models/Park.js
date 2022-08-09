@@ -29,6 +29,14 @@ Park.init(
         type: DataTypes.STRING,
         allowNull: false,
       }
-    });
+    },
+    {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'park'  
+});
 
-modules.exports = Park;
+
+module.exports = Park;
