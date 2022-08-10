@@ -1,6 +1,13 @@
 # Pick-Up
 ![License badge](https://img.shields.io/badge/license-MIT-blue)
 
+
+## Table of Contents
+- [Description](#description)
+- [Built With](#built-with)
+- [License](#License)
+
+
 ## Description
 
 Pick-Up is a simple user-focused app. The user can create an account that allows them to seek out, and schedule games for whatever sport they are in to. This app will make it easy to find a place to play and people to play with, whether you're planning ahead or you suddenly find yourself with some time to spare.
