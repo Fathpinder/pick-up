@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 // create our Event model
 class Event extends Model {}
 
@@ -10,38 +10,43 @@ Event.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     //location of park referenced by ID
     park_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        isinPark: true
-      }
+      references: {
+        model: "park",
+        key: "id",
+      },
+      // validate: {
+      //   isinPark: true,
+      // },
     },
-    //added to this list by RVSP 
+    //added to this list by RVSP
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
-        key: 'id'
-      }
+        model: "user",
+        key: "id",
+      },
     },
     description: {
-        type: DataTypes.STRING,
-        allowNull: true,
-    }
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'event'
+    modelName: "event",
   }
 );
 
