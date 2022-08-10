@@ -5,18 +5,8 @@ const { Park, User, Event } = require("../models");
 router.get("/", (req, res) => {
   console.log(req.session);
   Park.findAll({
-    attributes: [
-      "id",
-      "name",
-      "location",
-      "activities",
-      // [sequelize.literal("SELECT COUNT(*) FROM XX WHERE x.y")]
-    ],
+    attributes: ["id", "name", "location", "activities"],
     include: [
-      {
-        model: User,
-        attributes: ["id", "username", "email"],
-      },
       {
         model: Event,
         attributes: ["id", "title", "park_id", "user_id", "description"],
@@ -38,18 +28,7 @@ router.get("/park/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: [
-      "id",
-      "name",
-      "location",
-      "activites",
-      // [
-      //   sequelize.literal(
-      //     "(SELECT COUNT(*) FROM vote WHERE park.id = park.event_id)"
-      //   ),
-      //   "event_description",
-      // ],
-    ],
+    attributes: ["id", "name", "location", "activites"],
     include: [
       {
         model: Park,

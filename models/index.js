@@ -1,6 +1,6 @@
-const User = require('./User');
-const Park = require('./Park');
-const Event = require('./Event');
+const User = require("./User");
+const Park = require("./Park");
+const Event = require("./Event");
 //const RSVP = require('./RSVP');
 
 // create associations
@@ -18,17 +18,17 @@ Event.belongsTo(User, {
 //   through: Event,
 // });
 
-// Event.hasMany(User, { 
+// Event.hasMany(User, {
 //   //through: RSVP,
 //   foreignKey: 'event_id'
 // });
 
 Park.hasMany(Event, {
-    foreignKey: 'park_id'
+  foreignKey: "park_id",
 });
 
 Event.belongsTo(Park, {
-  foreignKey: 'park_id'
+  foreignKey: "park_id",
 });
 
-module.exports = { User, Park, Event};
+module.exports = { User, Park, Event };
