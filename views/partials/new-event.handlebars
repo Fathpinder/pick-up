@@ -2,28 +2,34 @@
     <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8">
             <div>
-                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Add Park</h2>
+                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Add Event</h2>
             </div>
-            <form class="mt-8 space-y-6 new-park-form" action="#" method="POST">
+            <form class="mt-8 space-y-6 new-event-form" action="#" method="POST">
                 <input type="hidden" name="remember" value="true">
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
-                        <label for="park-name" class="sr-only">Park Name</label>
-                        <input id="park-name" name="park-name" type="text" required
+                        <label for="event-name" class="sr-only">Event Title</label>
+                        <input id="event-name" name="event-name" type="text" required
                             class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            placeholder="Event Title">
+                    </div>
+                    <div>
+                        <label for="event-location" class="sr-only">Park ID</label>
+                        <input id="event-location" name="event-location" type="text" required
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Park Name">
                     </div>
                     <div>
-                        <label for="park-location" class="sr-only">Location</label>
-                        <input id="park-location" name="park-location" type="text" required
+                        <label for="user-id" class="sr-only">User ID</label>
+                        <input id="user-id" name="user-id" type="text" required
                             class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                            placeholder="Location">
+                            placeholder="Your User ID">
                     </div>
                     <div>
-                        <label for="park-activities" class="sr-only">Activities, separated by commas</label>
-                        <input id="park-activities" name="park-activites" type="text" required
+                        <label for="event-activities" class="sr-only">Description</label>
+                        <input id="event-activities" name="event-activites" type="text" required
                             class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                            placeholder="Activities">
+                            placeholder="Event Description">
                     </div>
                 </div>
 
@@ -40,19 +46,10 @@
                                     clip-rule="evenodd" />
                             </svg>
                         </span>
-                        Add Park
+                        Add Event
                     </button>
                 </div>
             </form>
         </div>
     </div>
-    <ol class="park-list">
-        {{#each parks as |park|}}
-        <li>
-            {{> park-info park }}
-        </li>
-        {{/each}}
-    </ol>
-    <script src="/javascript/add-park.js"></script>
-    <script src="/javascript/add-event.js"></script>
 </section>

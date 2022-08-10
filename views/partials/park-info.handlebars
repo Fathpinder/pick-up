@@ -1,15 +1,25 @@
-<article class="park">
-    <div class="park-info">
-        <h2 class="park-name">{{park.name}}</h2>
-        <h3 class="park-location">{{park.location}}</h3>
-        <h3 class="park-activities">{{park.activities}}</h3>
+<article class="park-info">
+    <div class="park-details">
+        <h2 class="park-name">{{name}}</h2>
+        <h3 class="park-location">{{location}}</h3>
+        <h3 class="park-activities">{{activities}}</h3>
     </div>
-    <div class="'park-events">
+    <div class="event-list">
         <ol>
-            {{#each event as |event|}}
+            {{#each events as |event|}}
             <li>
                 {{> event-info event}}
             </li>
+            {{/each}}
         </ol>
     </div>
+    <form class="add-event">
+        <div>
+            {{!-- Need to link button to form HTML --}}
+            <button type="submit" class="add-event">Add Event</button>
+        </div>
+    </form>
+    {{!-- {{#if loggedIn}}
+    <script src="/public/javascript/add-event.js"></script>
+    {{/if}} --}}
 </article>

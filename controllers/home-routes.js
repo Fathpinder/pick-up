@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/park/:id", (req, res) => {
-  Post.findOne({
+  Park.findOne({
     where: {
       id: req.params.id,
     },
@@ -44,15 +44,15 @@ router.get("/park/:id", (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => {
-      if (!dbPostData) {
+    .then((dbParkData) => {
+      if (!dbParkData) {
         res.status(404).json({ message: "No post found with this id" });
         return;
       }
 
-      const post = dbPostData.get({ plain: true });
+      const post = dbParkData.get({ plain: true });
 
-      res.render("single-post", {
+      res.render("single-park", {
         post,
         loggedIn: req.session.loggedIn,
       });
