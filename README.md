@@ -4,7 +4,7 @@
 
 ## Description
 
-Pick-Up is a simple user-focused app. The user can create an account that allows them to seek out, and schedule games for whatever sport they are in to. This app will make it easy to find a place to play and people to play with, whether you're planning ahead or you suddenly find yourself with some time to spare.
+Pick-Up is a simple user-focused app. The user can create an account that allows them to seek out, and schedule games for whatever sport they are in to. Whether you're planning ahead or you suddenly find yourself with some time to spare, this app will make it easy to find a place to play and people to play with.
 
 
 ![ScreenShot](  )
@@ -33,11 +33,10 @@ Pick-Up is a simple user-focused app. The user can create an account that allows
 
 
 ## User Story
-```md
-AS A USER that is interested in staying active
-I WANT to be able to search for parks and games, and create my own events
-SO THAT it's easy to fit recreational sports into my schedule
-```
+>AS A USER that is interested in staying active
+>I WANT to be able to search for parks and games, and create my own events
+>SO THAT it's easy to fit recreational sports into my schedule
+
 
 
 ## Contributers
