@@ -6,26 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pick Up</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-  <div class="wrapper">
-    <header>
-      <h1>
+<body class="bg-zinc-900 text-white">
+  <div class="">
+    <header class="border-b border-white mx-10">
+      <h1  class="pt-5 pb-5 text-3xl font-semibold">
         <a href="/">Pick Up</a>
       </h1>
-      <nav>
+      <nav class="fixed right-10 top-8">
         {{#if loggedIn}}
-        <button id="logout" class="btn">logout</button>
+        <button id="logout" class="text-xl">logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login" class="text-xl">login</a>
         {{/if}}
       </nav>
     </header>
     <main>
       {{{ body }}}
     </main>
-    <footer>
+    <footer class="fixed left-4 bottom-1
+            flex justify-center items-center">
       Thanks for visiting! &copy; 2022
     </footer>
   </div>
