@@ -33,15 +33,15 @@ Pick-Up is a simple user-focused app. The user can create an account that allows
 
 
 ## User Story
->AS A USER that is interested in staying active
->I WANT to be able to search for parks and games, and create my own events
+>AS A USER that is interested in staying active<br/>
+>I WANT to be able to search for parks and games, and create my own events<br/>
 >SO THAT it's easy to fit recreational sports into my schedule
 
 
 
 ## Contributers
 
-Collaborators Github Profiles:
+Collaborator's Github Profiles:
   
   [Chase Christenson](https://github.com/chasechri)<br/>
   [Mark Grangaard](https://github.com/Fathpinder)<br/>
