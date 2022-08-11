@@ -4,7 +4,7 @@
             <div>
                 <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Add Event</h2>
             </div>
-            <form class="mt-8 space-y-6 new-event-form" action="#" method="POST">
+            <form class="mt-8 space-y-6" id="new-event-form" action="#" method="POST">
                 <input type="hidden" name="remember" value="true">
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
@@ -17,7 +17,7 @@
                         <label for="event-location" class="sr-only">Park ID</label>
                         <input id="event-location" name="event-location" type="text" required
                             class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                            placeholder="Park Name">
+                            placeholder="Park ID">
                     </div>
                     <div>
                         <label for="user-id" class="sr-only">User ID</label>
@@ -46,10 +46,11 @@
                                     clip-rule="evenodd" />
                             </svg>
                         </span>
-                        Add Event
+                        Create Event
                     </button>
                 </div>
             </form>
         </div>
     </div>
+    <script src="/javascript/add-event.js"></script>
 </section>

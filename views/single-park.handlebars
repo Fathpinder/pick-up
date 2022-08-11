@@ -1,14 +1,1 @@
 {{> park-info park}}
-
-{{#if loggedIn}}
-<form class="add-event">
-    <div>
-        {{!-- Need to link button to form HTML --}}
-        <button type="submit" class="add-event">Add Event</button>
-    </div>
-</form>
-{{/if}}
-
-{{#if loggedIn}}
-<script src="/public/javascript/add-event.js"></script>
-{{/if}}

@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const sequelize = require("../config/connection");
 const { Park, User, Event } = require("../models");
 
 router.get("/", (req, res) => {
@@ -46,14 +45,14 @@ router.get("/park/:id", (req, res) => {
   })
     .then((dbParkData) => {
       if (!dbParkData) {
-        res.status(404).json({ message: "No post found with this id" });
+        res.status(404).json({ message: "No park found with this id" });
         return;
       }
 
-      const post = dbParkData.get({ plain: true });
+      const park = dbParkData.get({ plain: true });
 
       res.render("single-park", {
-        post,
+        park,
         loggedIn: req.session.loggedIn,
       });
     })
@@ -69,6 +68,16 @@ router.get("/login", (req, res) => {
     return;
   }
   res.render("login");
+});
+
+router.get("/new-event", (req, res) => {
+  if (!req.session.loggedIn) {
+    res
+      .status(400)
+      .json({ message: "You must be logged in to create an event" });
+    return;
+  }
+  res.render("new-event");
 });
 
 module.exports = router;

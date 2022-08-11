@@ -41,13 +41,7 @@ router.get("/:id", (req, res) => {
       },
     ],
   })
-    .then((dbEventData) => {
-      if (!dbEventData) {
-        res.status(404).json({ message: "No Event found with this id" });
-        return;
-      }
-      res.json(dbEventData);
-    })
+    .then((dbEventData) => res.json(dbEventData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -55,6 +49,21 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", withAuth, (req, res) => {
+  // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+  Event.create({
+    title: req.body.title,
+    park_id: req.body.park_id,
+    user_id: req.session.user_id,
+    description: req.session.description,
+  })
+    .then((dbEventData) => res.json(dbEventData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.post("/new-event", withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   Event.create({
     title: req.body.title,
