@@ -1,15 +1,24 @@
-<article class="park">
-    <div class="park-info">
-        <h2 class="park-name">{{park.name}}</h2>
-        <h3 class="park-location">{{park.location}}</h3>
-        <h3 class="park-activities">{{park.activities}}</h3>
+<article class="park-info">
+    <div class="park-details">
+        <h2 class="park-name">{{name}}</h2>
+        <h3 class="park-location">{{location}}</h3>
+        <h3 class="park-activities">{{activities}}</h3>
     </div>
-    <div class="'park-events">
+
+    <div class="event-list">
         <ol>
-            {{#each event as |event|}}
+            {{#each events as |event|}}
             <li>
-                {{> event-info event}}
+                {{> event event}}
             </li>
+            {{/each}}
         </ol>
+
+        {{!-- <form class="add-event">
+            <div>
+                <a href="/new-event">Add Event</a>
+            </div>
+        </form> --}}
+
     </div>
 </article>

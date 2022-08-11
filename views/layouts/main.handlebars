@@ -15,19 +15,18 @@
       <h1  class="pt-5 pb-5 text-3xl font-semibold">
         <a href="/">Pick Up</a>
       </h1>
-      <nav class="fixed right-10 top-8">
+      <nav class="absolute top-8 right-10">
         {{#if loggedIn}}
-        <button id="logout" class="text-xl">logout</button>
+        <button id="logout" class="text-2xl">logout</button>
         {{else}}
-        <a href="/login" class="text-xl">login</a>
+        <a href="/login" class="text-2xl">login</a>
         {{/if}}
       </nav>
     </header>
     <main>
       {{{ body }}}
     </main>
-    <footer class="fixed left-4 bottom-1
-            flex justify-center items-center">
+    <footer class="relative left-4 bottom-1">
       Thanks for visiting! &copy; 2022
     </footer>
   </div>

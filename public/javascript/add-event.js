@@ -1,18 +1,17 @@
 async function newFormHandler(event) {
   event.preventDefault();
 
-  const title = document.querySelector('input[name="event-title"]').value;
-  const park = document.querySelector('input[name="park-name"]').value;
-  const activities = document.querySelector('input[name="activities"]').value;
-  const description = document.querySelector(
-    'input[name="event-description"]'
-  ).value;
-  const response = await fetch(`/api/events`, {
+  const title = document.querySelector('input[name="event-name"]').value;
+  const park_id = document.querySelector('input[name="event-location"]').value;
+  const user_id = document.querySelector('input[name="user"]').value;
+  const description = document.querySelector('input[name="event-activities"]');
+
+  const response = await fetch(`/api/event/`, {
     method: "POST",
     body: JSON.stringify({
       title,
-      park,
-      activities,
+      park_id,
+      user_id,
       description,
     }),
     headers: {
@@ -21,12 +20,12 @@ async function newFormHandler(event) {
   });
 
   if (response.ok) {
-    document.location.replace("/events");
+    document.location.replace("/");
   } else {
     alert(response.statusText);
   }
 }
 
 document
-  .querySelector(".new-event-form")
+  .querySelector("#new-event-form")
   .addEventListener("submit", newFormHandler);

@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const sequelize = require("../config/connection");
 const { Park, User, Event } = require("../models");
 
 router.get("/", (req, res) => {
@@ -24,36 +23,32 @@ router.get("/", (req, res) => {
 });
 
 router.get("/park/:id", (req, res) => {
-  Post.findOne({
+  Park.findOne({
     where: {
       id: req.params.id,
     },
     attributes: ["id", "name", "location", "activites"],
     include: [
       {
-        model: Park,
-        attributes: ["id", "name", "location", "activities"],
-        include: {
-          model: Event,
-          attributes: ["id", "park_id"],
-        },
+        model: Event,
+        attributes: ["id", "title", "park_id", "user_id", "description"],
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["id", "username", "email", "password"],
       },
     ],
   })
-    .then((dbPostData) => {
-      if (!dbPostData) {
-        res.status(404).json({ message: "No post found with this id" });
+    .then((dbParkData) => {
+      if (!dbParkData) {
+        res.status(404).json({ message: "No park found with this id" });
         return;
       }
 
-      const post = dbPostData.get({ plain: true });
+      const park = dbParkData.get({ plain: true });
 
-      res.render("single-post", {
-        post,
+      res.render("single-park", {
+        park,
         loggedIn: req.session.loggedIn,
       });
     })
@@ -69,6 +64,16 @@ router.get("/login", (req, res) => {
     return;
   }
   res.render("login");
+});
+
+router.get("/new-event", (req, res) => {
+  if (!req.session.loggedIn) {
+    res
+      .status(400)
+      .json({ message: "You must be logged in to create an event" });
+    return;
+  }
+  res.render("new-event");
 });
 
 module.exports = router;
