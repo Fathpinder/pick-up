@@ -7,7 +7,10 @@
 Pick-Up is a simple user-focused app. The user can create an account that allows them to seek out, and schedule games for whatever sport they are in to. Whether you're planning ahead or you suddenly find yourself with some time to spare, this app will make it easy to find a place to play and people to play with.
 
 
-![ScreenShot](  )
+### [Click to View Application](https://pick-up-event.herokuapp.com/)
+
+
+![ScreenShot](./assets/images/pick-up.png)
 
 
 ## Table of Contents
@@ -33,9 +36,9 @@ Pick-Up is a simple user-focused app. The user can create an account that allows
 
 
 ## User Story
->AS A USER that is interested in staying active<br/>
->I WANT to be able to search for parks and games, and create my own events<br/>
->SO THAT it's easy to fit recreational sports into my schedule
+>AS AN active casual sports player<br/>
+>I WANT to find/organize pick-up events at locations near me<br/>
+>SO THAT I can enjoy my favorite sports and meet other with similar interests
 
 
 
