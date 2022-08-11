@@ -30,16 +30,12 @@ router.get("/park/:id", (req, res) => {
     attributes: ["id", "name", "location", "activites"],
     include: [
       {
-        model: Park,
-        attributes: ["id", "name", "location", "activities"],
-        include: {
-          model: Event,
-          attributes: ["id", "park_id"],
-        },
+        model: Event,
+        attributes: ["id", "title", "park_id", "user_id", "description"],
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["id", "username", "email", "password"],
       },
     ],
   })

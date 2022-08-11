@@ -10,6 +10,20 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+  Park.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: ["id", "name", "location", "activities"],
+  })
+    .then((dbParkData) => res.json(dbParkData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.post("/", (req, res) => {
   console.log(req.body);
   Park.create({
