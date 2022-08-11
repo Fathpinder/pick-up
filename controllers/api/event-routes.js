@@ -1,32 +1,19 @@
 const router = require("express").Router();
-const sequelize = require("../../config/connection");
 const { Event, User, RSVP, Park } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-// get all users
 router.get("/", (req, res) => {
   console.log("======================");
   Event.findAll({
-    attributes: [
-      "id",
-      "title",
-      "park_id",
-      "user_id",
-      "description",
-      //[sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Event.id = vote.post_id)'), 'vote_count']
-    ],
+    attributes: ["id", "title", "park_id", "user_id", "description"],
     include: [
       {
-        model: RSVP,
-        // attributes: [],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
+        model: Park,
+        attributes: ["name", "location", "activities"],
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["user_id"],
       },
     ],
   })
@@ -45,26 +32,16 @@ router.get("/:id", (req, res) => {
     attributes: ["id", "title", "park_id", "user_id", "description"],
     include: [
       {
-        model: RSVP,
-        //attributes: [],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
+        model: Park,
+        attributes: ["name", "location", "activities"],
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["user_id"],
       },
     ],
   })
-    .then((dbEventData) => {
-      if (!dbEventData) {
-        res.status(404).json({ message: "No Event found with this id" });
-        return;
-      }
-      res.json(dbEventData);
-    })
+    .then((dbEventData) => res.json(dbEventData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -77,6 +54,7 @@ router.post("/", withAuth, (req, res) => {
     title: req.body.title,
     park_id: req.body.park_id,
     user_id: req.session.user_id,
+    description: req.session.description,
   })
     .then((dbEventData) => res.json(dbEventData))
     .catch((err) => {
@@ -85,18 +63,33 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
-router.put("/rsvp", withAuth, (req, res) => {
-  // custom static method created in models/Event.js
-  Event.upvote(
-    { ...req.body, user_id: req.session.user_id },
-    { Park, RSVP, User }
-  )
-    .then((updatedRSVPData) => res.json(updatedRSVPData))
+router.post("/new-event", withAuth, (req, res) => {
+  // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+  Event.create({
+    title: req.body.title,
+    park_id: req.body.park_id,
+    user_id: req.session.user_id,
+    description: req.session.description,
+  })
+    .then((dbEventData) => res.json(dbEventData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
+
+// router.put("/rsvp", withAuth, (req, res) => {
+//   // custom static method created in models/Event.js
+//   Event.upvote(
+//     { ...req.body, user_id: req.session.user_id },
+//     { Park, RSVP, User }
+//   )
+//     .then((updatedRSVPData) => res.json(updatedRSVPData))
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 router.put("/:id", withAuth, (req, res) => {
   Event.update(
