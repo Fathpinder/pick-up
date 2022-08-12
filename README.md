@@ -10,7 +10,7 @@ Pick-Up is a simple user-focused app. The user can create an account that allows
 ### [Click to View Application](https://pick-up-event.herokuapp.com/)
 
 
-![ScreenShot](./assets/images/pick-up.png)
+![ScreenShot](./assets/images/pick-up-screenshot.png)
 
 
 ## Table of Contents
