@@ -17,7 +17,10 @@ router.get("/", (req, res) => {
       },
     ],
   })
-    .then((dbEventData) => res.json(dbEventData))
+    .then((dbEventData) => {
+      const events = dbEventData.map((event) => event.get({ plain: true }));
+      res.render("event", { events, loggedIn: req.session.loggedIn });
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -41,7 +44,14 @@ router.get("/:id", (req, res) => {
       },
     ],
   })
-    .then((dbEventData) => res.json(dbEventData))
+    .then((dbEventData) => {
+      if (!dbEventData) {
+        res.status(404).json({ message: "No Event found with this id" });
+        return;
+      }
+      const event = dbEventData.get({ plain: true });
+      res.render = ("event", { event, loggedIn: req.session.loggedIn });
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
