@@ -79,10 +79,10 @@
                                     m-0
                                     park-location
                                     focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                    aria-label="Default select example" name="park-location" id="park-location">
+                                    aria-label="Default select example" name="event-location" id="event-location">
                                     <option selected>Choose a park</option>
                                     {{#each parks}}
-                                    <option value="{{this}}">{{this.name}}</option>
+                                    <option value="{{this.id}}">{{this.name}}</option>
                                     {{/each}}
                                 </select>
                             </div>
@@ -94,15 +94,15 @@
                                 placeholder="Park ID">
                         </div> --}}
                         <div>
-                            <label for="user" class="sr-only">User ID</label>
-                            <input id="user" name="user" type="text" required
+                            <label for="user-id" class="sr-only">User ID</label>
+                            <input id="user-id" name="user-id" type="text" required
                                 class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Your User ID">
                         </div>
                         <div>
                             <label for="event-activities" class="sr-only">Description</label>
-                            <input id="event-activities" name="event-activities" type="text" required
-                                class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            <input name="event-activities" type="text" required
+                                class="event-activities appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Event Activities">
                         </div>
                     </div>
