@@ -9,24 +9,24 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-  <div class="wrapper">
-    <header>
-      <h1>
+<body class="bg-zinc-900 text-white">
+  <div class="">
+    <header class="border-b border-white mx-10">
+      <h1  class="pt-5 pb-5 text-3xl font-semibold">
         <a href="/">Pick Up</a>
       </h1>
-      <nav>
+      <nav class="absolute top-8 right-10">
         {{#if loggedIn}}
-        <button id="logout" class="btn">logout</button>
+        <button id="logout" class="text-2xl">logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login" class="text-2xl">login</a>
         {{/if}}
       </nav>
     </header>
     <main>
       {{{ body }}}
     </main>
-    <footer>
+    <footer class="relative left-4 bottom-1">
       Thanks for visiting! &copy; 2022
     </footer>
   </div>
