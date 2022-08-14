@@ -4,7 +4,9 @@ async function newFormHandler(event) {
   const title = document.querySelector('input[name="event-name"]').value;
   const park_id = document.querySelector('select[name="event-location"]').value;
   const user_id = document.querySelector('input[name="user-id"]').value;
-  const description = document.querySelector('input[name="event-activities"]');
+  const description = document.querySelector(
+    'input[name="event-activities"]'
+  ).value;
 
   const response = await fetch(`/api/event/`, {
     method: "POST",
@@ -20,6 +22,7 @@ async function newFormHandler(event) {
   });
 
   if (response.ok) {
+    console.log(description);
     document.location.replace("/");
   } else {
     alert(response.statusText);
