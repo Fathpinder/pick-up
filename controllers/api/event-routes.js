@@ -64,7 +64,7 @@ router.post("/", withAuth, (req, res) => {
     title: req.body.title,
     park_id: req.body.park_id,
     user_id: req.session.user_id,
-    description: req.session.description,
+    description: req.body.description,
   })
     .then((dbEventData) => res.json(dbEventData))
     .catch((err) => {
@@ -79,7 +79,7 @@ router.post("/new-event", withAuth, (req, res) => {
     title: req.body.title,
     park_id: req.body.park_id,
     user_id: req.session.user_id,
-    description: req.session.description,
+    description: req.body.description,
   })
     .then((dbEventData) => res.json(dbEventData))
     .catch((err) => {
