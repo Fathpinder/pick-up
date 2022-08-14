@@ -2,9 +2,11 @@ const path = require("path");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
+const morgan = require("morgan");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+app.use(morgan('dev'));
 
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
