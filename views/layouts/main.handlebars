@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pick Up</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-zinc-900 text-white">
+  <div class="">
+    <header class="border-b border-white mx-10">
+      <h1  class="pt-5 pb-5 text-3xl font-semibold">
+        <a href="/">Pick Up</a>
+      </h1>
+      <nav class="absolute top-8 right-10">
+        {{#if loggedIn}}
+        <button id="logout" class="text-2xl">logout</button>
+        {{else}}
+        <a href="/login" class="text-2xl">login</a>
+        {{/if}}
+      </nav>
+    </header>
+    <main>
+      {{{ body }}}
+    </main>
+    <footer class="relative left-4 bottom-1">
+      Thanks for visiting! &copy; 2022
+    </footer>
+  </div>
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>
