@@ -2,7 +2,7 @@ async function newParkHandler(event) {
   event.preventDefault();
 
   const name = document.querySelector('input[name="park-name"]').value;
-  const location = document.querySelector('input[name="park-location"]').value;
+  const location = document.querySelector('select[name="park-location"]').value;
   const activities = document.querySelector("#park-activities").value;
 
   const response = await fetch(`/api/park`, {
